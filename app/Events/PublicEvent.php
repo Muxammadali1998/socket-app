@@ -12,21 +12,16 @@ use Illuminate\Queue\SerializesModels;
 class PublicEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public string $message ;
-    public function __construct($data)
+    public function __construct()
     {
-        $this->message = $data;
     }
 
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
-        return  new Channel('public_channel');
-    }
-
-    public function With(): array
-    {
-        return [
-            'message'=>$this->message
+        return  [
+            new Channel('appChannel'),
         ];
     }
+
+
 }

@@ -9,7 +9,7 @@ class ChannelController extends Controller
 {
     public function index()
     {
-        event(new PublicEvent('salam ail'));
+        event(new PublicEvent);
         return "ok";
     }
 }

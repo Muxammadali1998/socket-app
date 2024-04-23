@@ -33,11 +33,13 @@ return [
             'port' => env('REVERB_SERVER_PORT', 8080),
             'hostname' => env('REVERB_HOST'),
             'options' => [
-                'tls' => [],
+                'tls' => [
+                    'local_cert' => '/path/to/cert.pem'
+                ],
             ],
             'max_request_size' => env('REVERB_MAX_REQUEST_SIZE', 10_000),
             'scaling' => [
-                'enabled' => env('REVERB_SCALING_ENABLED', false),
+                'enabled' => env('REVERB_SCALING_ENABLED', true),
                 'channel' => env('REVERB_SCALING_CHANNEL', 'reverb'),
             ],
             'pulse_ingest_interval' => env('REVERB_PULSE_INGEST_INTERVAL', 15),
@@ -72,6 +74,7 @@ return [
                     'scheme' => env('REVERB_SCHEME', 'https'),
                     'useTLS' => env('REVERB_SCHEME', 'https') === 'https',
                 ],
+                'id'=> env('REVERB_APP_ID'),
                 'allowed_origins' => ['*'],
                 'ping_interval' => env('REVERB_APP_PING_INTERVAL', 60),
                 'max_message_size' => env('REVERB_APP_MAX_MESSAGE_SIZE', 10_000),
